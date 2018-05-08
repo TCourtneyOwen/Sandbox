@@ -99,7 +99,7 @@ describe('Create new project from prompts only', () => {
   describe('jquery & javascript', () => {
     before((done) => {
       answers.scriptType = 'Javascript';
-      answers.projectType = 'Jquery';
+      answers.projectType = 'jquery';
       helpers.run(path.join(__dirname, '../app'))
         .withPrompts(answers)
         .on('end', done);
@@ -153,7 +153,7 @@ describe('Create new project from prompts only', () => {
   describe('angular & javascript', () => {
     before((done) => {
       answers.scriptType = 'Javascript';
-      answers.projectType = 'Angular';
+      answers.projectType = 'angular';
       helpers.run(path.join(__dirname, '../app'))
         .withPrompts(answers)
         .on('end', done);
@@ -184,7 +184,7 @@ describe('Create new project from prompts only', () => {
   describe('react & typescript', () => {
     before((done) => {
       answers.scriptType = 'Typescript';
-      answers.projectType = 'React';
+      answers.projectType = 'react';
       helpers.run(path.join(__dirname, '../app'))
         .withPrompts(answers)
         .on('end', done);
@@ -240,7 +240,7 @@ describe('Create new project from prompts and command line overrides', () => {
       answers.name = projectEscapedName;
       answers.scriptType = 'Typescript';
       answers.host = 'Excel';      
-      argument[0] = 'Jquery';
+      argument[0] = 'jquery';
 
       helpers.run(path.join(__dirname, '../app'))
         .withArguments(argument)
@@ -278,7 +278,7 @@ describe('Create new project from prompts and command line overrides', () => {
       answers.scriptType = 'Typescript';
       answers.name = null;
       answers.host = 'Excel'
-      argument[0] = 'Jquery';
+      argument[0] = 'jquery';
       argument[1] = projectEscapedName;
 
       helpers.run(path.join(__dirname, '../app'))
@@ -314,7 +314,7 @@ describe('Create new project from prompts and command line overrides', () => {
 	 */
   describe('arguments: project name host', () => {
     before((done) => {
-      argument[0] = 'Jquery';
+      argument[0] = 'jquery';
       argument[1] = projectEscapedName;
       argument[2] = 'Excel';      
 
@@ -383,7 +383,7 @@ describe('Create new project from prompts with command line options', () => {
   let projectEscapedName = 'my-office-add-in';
   let answers = {
     scriptType: null,
-    projectType: 'Jquery',    
+    projectType: 'jquery',    
     name: projectDisplayName,
     host: 'Excel'   
   };
