@@ -215,7 +215,7 @@ module.exports = yo.extend({
 
       /** Check to to see if destination folder already exists. If so, we will exit and prompt the user to provide
       a different project name or output folder */
-      this._projectFolderExists();
+      // this._projectFolderExists();
 
       let duration = this.project.duration;
       insight.trackEvent('App_Data', { AppID: this.project.projectId, Host: this.project.host, ProjectType: this.project.projectType/* , isTypeScript: this.project.scriptType = 'Typescript' */ }, { duration });
@@ -355,7 +355,7 @@ module.exports = yo.extend({
         return true;
       }
     }
-    return true;
+    return false;
   },
 
 _projectFolderExists: function ()
