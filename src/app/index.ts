@@ -355,7 +355,7 @@ module.exports = yo.extend({
         return true;
       }
     }
-    return false;
+    return true;
   },
 
 _projectFolderExists: function ()
