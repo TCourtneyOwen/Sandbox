@@ -72,7 +72,7 @@ describe('Create new project from prompts only', () => {
   describe('jquery & typescript', () => {
     before((done) => {      
       answers.projectType = 'jquery';
-      answers.scriptType = 'typescript';
+      answers.scriptType = 'Typescript';
       helpers.run(path.join(__dirname, '../app'))
         .withPrompts(answers)
         .on('end', done);
