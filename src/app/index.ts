@@ -74,7 +74,8 @@ module.exports = yo.extend({
   prompting: async function () {
     try {
       let jsTemplates = getDirectories(this.templatePath('js')).map(template => _.capitalize(template)); 
-      let tsTemplates = getDirectories(this.templatePath('ts')).map(template => _.capitalize(template)); 
+      // let tsTemplates = getDirectories(this.templatePath('ts')).map(template => _.capitalize(template)); 
+      let tsTemplates = [];
       jsTemplates.push(`Manifest`);
       tsTemplates.push(`Manifest`);
       tsTemplates.push(`ExcelCustomFunctions`);
