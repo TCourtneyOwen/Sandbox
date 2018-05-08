@@ -64,7 +64,7 @@ describe('Create new project from prompts only', () => {
     projectType: null,
     scriptType: null,    
     name: projectDisplayName,
-    host: 'Excel'    
+    host: 'excel'    
   };
   let manifestFileName = projectEscapedName + '-manifest.xml';
 
