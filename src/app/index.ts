@@ -77,7 +77,8 @@ module.exports = yo.extend({
       let tsTemplates = getDirectories(this.templatePath('ts')).map(template => _.capitalize(template)); 
       jsTemplates.push(`Manifest`);
       tsTemplates.push(`Manifest`);
-      tsTemplates.push(`ExcelCustomFunctions`);    
+      tsTemplates.push(`ExcelCustomFunctions`);
+      tsTemplates.push(`Jquery`);
       let allTemplates = tsTemplates;
       let hosts = getDirectories(this.templatePath('hosts'));
       let isManifestProject = false;
@@ -215,7 +216,7 @@ module.exports = yo.extend({
 
       /** Check to to see if destination folder already exists. If so, we will exit and prompt the user to provide
       a different project name or output folder */
-      // this._projectFolderExists();
+      this._projectFolderExists();
 
       let duration = this.project.duration;
       insight.trackEvent('App_Data', { AppID: this.project.projectId, Host: this.project.host, ProjectType: this.project.projectType/* , isTypeScript: this.project.scriptType = 'Typescript' */ }, { duration });
@@ -350,7 +351,7 @@ module.exports = yo.extend({
           this.options.host = element;
         }
         else {
-          this.options['project-type'] = element;
+          this.options.projectType = element;
         }
         return true;
       }
