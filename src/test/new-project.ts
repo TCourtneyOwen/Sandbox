@@ -71,8 +71,8 @@ describe('Create new project from prompts only', () => {
   /** Test addin when user chooses jquery and typescript. */
   describe('jquery & typescript', () => {
     before((done) => {      
-      answers.projectType = 'Jquery';
-      answers.scriptType = 'Typescript';
+      answers.projectType = 'jquery';
+      answers.scriptType = 'typescript';
       helpers.run(path.join(__dirname, '../app'))
         .withPrompts(answers)
         .on('end', done);
