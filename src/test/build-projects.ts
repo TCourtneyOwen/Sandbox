@@ -20,6 +20,8 @@ describe('Install and build projects', () => {
     let projectFolder = '';
     let js = false;
 
+    console.log("current directoy is " + __dirname);
+
     // Build React Excel Typescript project
     describe(stringBuildStart + 'React Excel Typescript', () => {
         before(function(){
