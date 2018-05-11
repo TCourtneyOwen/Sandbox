@@ -71,10 +71,10 @@ describe('Install and build projects', () => {
 function _generateProject(projectType, projectName, host, projectFolder, js)
 {
     if (js){
-        installOutput = shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder + space + javascript, {silent: true}).stdout;
+        installOutput = shell.exec('yo office react excelreacttest excel --js');
     }
     else{
-        installOutput = shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder, {silent: true}).stdout;
+        installOutput = shell.exec('yo office react excelreacttest excel');
     }
     console.log('This is the install output' + installOutput);
     assert.equal(installOutput.indexOf(failure), -1, "Install output contained errors");    
