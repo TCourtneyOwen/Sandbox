@@ -71,9 +71,15 @@ describe('Install and build projects', () => {
 function _generateProject(projectType, projectName, host, projectFolder, js)
 {
     if (js){
+        shell.cd(__dirname);
+        shell.exec('npm link');
         installOutput = shell.exec('yo office react excelreacttest excel --js');
     }
     else{
+        shell.cd(__dirname);
+        shell.exec('npm install');
+        // shell.exec('npm run build');
+        shell.exec('npm link');
         installOutput = shell.exec('yo office react excelreacttest excel');
     }
     console.log('This is the install output' + installOutput);
