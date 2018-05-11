@@ -12,6 +12,8 @@ const output = '--output';
 const javascript = '--js';
 const space = ' ';
 
+console.log ("Install Yeoman Generator");
+shell.exec('npm install -g yo');
 describe('Install and build projects', () => {
     let projectType = '';
     let projectName = '';
