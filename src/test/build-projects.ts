@@ -44,15 +44,15 @@ for (var i = 0; i < hostsTemplates.length; i++)
             let projectName = '';
             let host = hostsTemplates[i];
             let projectFolder = '';
-            let js = false;
+            let scriptType = typescript;
         
-            describe(stringBuildStart + projectType + space + host + space + typescript, () => {
+            describe(stringBuildStart +  host + space + projectType + space + typescript, () => {
                 before(function(){
                     projectName = projectType + host + typescript;
                     projectFolder = path.join(__dirname, '/', projectName);
                   });
                 it(stringBuildSucceeds,function(done){  
-                    _generateProject(projectType, projectName, host, projectFolder, js);
+                    _generateProject(projectType, projectName, host, projectFolder, scriptType);
                     _buildProject(projectFolder, projectType);
                     done();                    
                   });
@@ -71,9 +71,9 @@ for (var i = 0; i < hostsTemplates.length; i++)
             let projectName = '';
             let host = hostsTemplates[i];
             let projectFolder = '';
-            let js = true;
+            let scriptType = javascript;
         
-            describe(stringBuildStart + projectType + space + host + space + javascript, () => {
+            describe(stringBuildStart +  host + space + projectType + space + javascript, () => {
                 before(function(){
                     projectName = projectType + host + javascript;
                     projectFolder = path.join(__dirname, '/', projectName);
@@ -95,9 +95,9 @@ function _setupTestEnvironment()
     shell.exec('npm link', {silent: true});
 }
 
-function _generateProject(projectType, projectName, host, projectFolder, js)
+function _generateProject(projectType, projectName, host, projectFolder, scriptType)
 {
-    if (js){
+    if (scriptType == javascript){
         shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder + space + js, {silent: true});
     }
     else{
@@ -118,7 +118,7 @@ function _buildProject(projectFolder, projectType)
             shell.cd(__dirname);
         }
         // do clean-up after test runs
-        _deleteFolderRecursively(projectFolder);
+        // _deleteFolderRecursively(projectFolder);
     }
     else
     {
