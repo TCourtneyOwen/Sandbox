@@ -92,7 +92,7 @@ function _buildProject(projectFolder)
     }
     else
     {
-        assert.true(false, projectFolder + " doesn't exist");
+        assert(false, projectFolder + " doesn't exist");
     }
 }
 
