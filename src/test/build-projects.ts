@@ -1,83 +1,96 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as yo from 'yeoman-generator';
 var shell = require('shelljs');
 var assert = require('assert');
-let installOutput = '';
-let buildOutput = '';
-const failure = 'error';
 const stringBuildStart = 'Generate and build ';
 const stringBuildSucceeds = 'Install and build succeeds';
 const yoOffice = 'yo office';
 const output = '--output';
-const javascript = '--js';
+const js = '--js';
+const ts = '--ts';
+const javascript = 'Javascript';
+const typescript = 'Typescript';
 const space = ' ';
+const angular = 'Angular';
+const customFunctions = 'ExcelCustomFunctions';
+const jquery = 'Jquery';
+const manifest = 'Manifest';
+const react = 'React';
+let jsTemplates = [angular, jquery, manifest];
+let tsTemplates = [angular, customFunctions, jquery, manifest, react];
+let hostsTemplates = ['Excel', 'Onenote', 'Outlook','Powerpoint', 'Project', 'Word'];
 
-_setupTestEnvironment();
 
-describe('Install and build projects', () => {
-    let projectType = '';
-    let projectName = '';
-    let host = '';
-    let projectFolder = '';
-    let js = false;
-
-    // Build React Excel Typescript project
-    describe(stringBuildStart + 'React Excel Typescript', () => {
-        before(function(){
-            projectType = 'React'
-            projectName = 'ReactExcelTs';
-            host = 'Excel';
-            projectFolder = path.join(__dirname, '/', projectName);
-            js = false;
-          });
-        it(stringBuildSucceeds,function(done){         
-            _generateProject(projectType, projectName, host, projectFolder, js);
-            _buildProject(projectFolder);
-            done();
-          });
-      });
-
-    // Build Angular Excel Javascript project
-    describe(stringBuildStart + 'React Excel Javascript', () => {
-        before(function(){
-            projectType = 'Angular'
-            host = 'Excel';
-            projectName = projectType + host + 'Js';
-            projectFolder = path.join(__dirname, '/', projectName);
-            js = true;
-          });
-        it(stringBuildSucceeds,function(done){
-            _generateProject(projectType, projectName, host, projectFolder, js);
-            _buildProject(projectFolder);
-            done();
-          });
-      });
-
-    // Build Jquery Excel Javascript project
-    describe(stringBuildStart + 'JQuery Excel Javascript', () => {
-        before(function(){
-            projectType = 'Jquery'
-            host = 'Excel';
-            projectName = projectType + host + 'Js';
-            projectFolder = path.join(__dirname, '/', projectName);
-            js = true;
-          });
-        it(stringBuildSucceeds,function(done){
-            _generateProject(projectType, projectName, host, projectFolder, js);
-            _buildProject(projectFolder);
-            done();
-          });
-      });
+describe('Setup test environment for Yo Office build tests', () => {
+    it ('Install Yeoman Generator and Install local install of Yo Office and link', function(done){
+        _setupTestEnvironment();
+        done();
     });
+}); 
+
+// Build Typescript project types for all supported hosts
+for (var i = 0; i < hostsTemplates.length; i++)
+{
+    for (var j = 0; j < tsTemplates.length; j++)
+    {
+        // Skip generate and build if the project type is ExcelCustomFunctions but the host isn't Excel
+        if (tsTemplates[j] == customFunctions && hostsTemplates [i] != 'Excel')
+        {
+            continue;
+        }
+        describe('Install and build projects', () => {
+            let projectType = tsTemplates[j];
+            let projectName = '';
+            let host = hostsTemplates[i];
+            let projectFolder = '';
+            let js = false;
+        
+            describe(stringBuildStart + projectType + space + host + space + typescript, () => {
+                before(function(){
+                    projectName = projectType + host + typescript;
+                    projectFolder = path.join(__dirname, '/', projectName);
+                  });
+                it(stringBuildSucceeds,function(done){  
+                    _generateProject(projectType, projectName, host, projectFolder, js);
+                    _buildProject(projectFolder, projectType);
+                    done();                    
+                  });
+              }); 
+            });
+        }
+    }
+
+// Build Javascript project types for all supported hosts
+for (var i = 0; i < hostsTemplates.length; i++)
+{
+    for (var j = 0; j < jsTemplates.length; j++)
+    {
+        describe('Install and build projects', () => {
+            let projectType = jsTemplates[j];
+            let projectName = '';
+            let host = hostsTemplates[i];
+            let projectFolder = '';
+            let js = true;
+        
+            describe(stringBuildStart + projectType + space + host + space + javascript, () => {
+                before(function(){
+                    projectName = projectType + host + javascript;
+                    projectFolder = path.join(__dirname, '/', projectName);
+                  });
+                it(stringBuildSucceeds,function(done){         
+                    _generateProject(projectType, projectName, host, projectFolder, js);
+                    _buildProject(projectFolder, projectType);
+                    done();
+                  });
+              }); 
+            });
+        }
+    }
     
 function _setupTestEnvironment()
 {
-    console.log("This test class creates and builds numerous projects; hence it takes awhile to run");
-
-    console.log ("Install Yeoman Generator");
-    shell.exec('npm install -g yo', {silent: true});
- 
-    console.log("Install local install of Yo Office and link")
+    shell.exec('npm install -g yo', {silent: true}); 
     shell.exec('npm install', {silent: true});
     shell.exec('npm link', {silent: true});
 }
@@ -85,21 +98,26 @@ function _setupTestEnvironment()
 function _generateProject(projectType, projectName, host, projectFolder, js)
 {
     if (js){
-        shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder + space + javascript, {silent: true});
+        shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder + space + js, {silent: true});
     }
     else{
-        shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder/* , {silent: true} */);
+        shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder + space + ts, {silent: true});
     } 
 }
 
-function _buildProject(projectFolder)
+function _buildProject(projectFolder, projectType)
 {
     if (_projectFolderExists(projectFolder))
     {
-        shell.cd(projectFolder);
-        buildOutput = shell.exec('npm run build', {silent: true}).stdout;
-        assert.equal(buildOutput.toLowerCase().indexOf(failure), -1, "Build output contained errors");
-        shell.cd(__dirname);
+        if (projectType != manifest || projectType != customFunctions)
+        {
+            const failure = 'error';
+            shell.cd(projectFolder);
+            let buildOutput = shell.exec('npm run build', {silent: true}).stdout;
+            assert.equal(buildOutput.toLowerCase().indexOf(failure), -1, "Build output contained errors");
+            shell.cd(__dirname);
+        }
+        // do clean-up after test runs
         _deleteFolderRecursively(projectFolder);
     }
     else
