@@ -232,17 +232,17 @@ module.exports = yo.extend({
         /** Show type of project creating in progress */
         if (!this.project.isManifestOnly && !this.project.isCustomFunctionsProject) {
           this.log('\n----------------------------------------------------------------------------------\n');
-          this.log(`      Creating ${chalk.bold.green(this.project.projectDisplayName)} add-in at ${chalk.bold.magenta(this._destinationRoot)} for ${chalk.bold.yellow(this.project.host)} using ${chalk.bold.magenta(language)}\n`);
+          this.log(`      Foo ${chalk.bold.green(this.project.projectDisplayName)} add-in at ${chalk.bold.magenta(this._destinationRoot)} for ${chalk.bold.yellow(this.project.host)} using ${chalk.bold.magenta(language)}\n`);
           this.log('----------------------------------------------------------------------------------\n\n');
         }
         else if (this.project.isCustomFunctionsProject) {
           this.log('\n----------------------------------------------------------------------------------\n');
-          this.log(`      Creating Excel Custom Functions ${chalk.bold.green(this.project.projectDisplayName)} add-in at ${chalk.bold.magenta(this._destinationRoot)}\n`);
+          this.log(`      Foo Excel Custom Functions ${chalk.bold.green(this.project.projectDisplayName)} add-in at ${chalk.bold.magenta(this._destinationRoot)}\n`);
           this.log('----------------------------------------------------------------------------------\n\n');
         }
         else {  
           this.log('----------------------------------------------------------------------------------\n');  
-          this.log(`      Creating manifest for ${chalk.bold.green(this.project.projectDisplayName)} at ${chalk.bold.magenta(this._destinationRoot)}\n`);  
+          this.log(`      Foo manifest for ${chalk.bold.green(this.project.projectDisplayName)} at ${chalk.bold.magenta(this._destinationRoot)}\n`);  
           this.log('----------------------------------------------------------------------------------\n\n');  
           }          
 

@@ -88,7 +88,7 @@ function _generateProject(projectType, projectName, host, projectFolder, js)
         shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder + space + javascript, {silent: true});
     }
     else{
-        shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder, {silent: true});
+        shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder/* , {silent: true} */);
     } 
 }
 
