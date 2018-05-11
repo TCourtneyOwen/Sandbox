@@ -30,6 +30,13 @@ describe('Install and build projects', () => {
             js = false;
           });
         it(stringBuildSucceeds,function(done){
+            fs.writeFile("output.txt", "Hello World!", function(err) {
+                if(err) {
+                    return console.log(err);
+                }
+                console.log("File saved successfully!");
+            });
+            
             _generateProject(projectType, projectName, host, projectFolder, js);
             _buildProject(projectFolder);
             done();
