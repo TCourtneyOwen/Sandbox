@@ -77,6 +77,8 @@ function _generateProject(projectType, projectName, host, projectFolder, js)
     else{
         installOutput = shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder, {silent: true}).stdout;
     }
+    console.log(installOutput);
+    console.log(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder);
     assert.equal(installOutput.indexOf(failure), -1, "Install output contained errors");    
 }
 
