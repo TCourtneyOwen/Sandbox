@@ -12,11 +12,7 @@ const output = '--output';
 const javascript = '--js';
 const space = ' ';
 
-console.log ("Install Yeoman Generator");
-shell.exec('npm install -g yo');
-console.log("Install local install of Yo Office and link")
-shell.exec('npm install');
-shell.exec('npm link');
+_setupTestEnvironment();
 
 describe('Install and build projects', () => {
     let projectType = '';
@@ -72,18 +68,28 @@ describe('Install and build projects', () => {
             done();
           });
       });
-    });   
+    });
+    
+function _setupTestEnvironment()
+{
+    console.log("This test class creates and builds numerous projects; hence it takes awhile to run");
+
+    console.log ("Install Yeoman Generator");
+    shell.exec('npm install -g yo', {silent: true});
+ 
+    console.log("Install local install of Yo Office and link")
+    shell.exec('npm install', {silent: true});
+    shell.exec('npm link', {silent: true});
+}
 
 function _generateProject(projectType, projectName, host, projectFolder, js)
 {
     if (js){
-        installOutput = shell.exec("yo office react excelreacttest excel --js");
+        shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder + space + javascript, {silent: true});
     }
     else{
-        installOutput = shell.exec("yo office react excelreacttest excel");
-    }
-    console.log('This is the install output' + installOutput);
-    assert.equal(installOutput.indexOf(failure), -1, "Install output contained errors");    
+        shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder, {silent: true});
+    } 
 }
 
 function _buildProject(projectFolder)
