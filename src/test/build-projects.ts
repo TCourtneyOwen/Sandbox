@@ -4,8 +4,7 @@ var shell = require('shelljs');
 var assert = require('assert');
 let installOutput = '';
 let buildOutput = '';
-const installSuccess = 'Congratulations!';
-const failure = 'ERROR';
+const failure = 'error';
 const stringBuildStart = 'Generate and build ';
 const stringBuildSucceeds = 'Install and build succeeds';
 const yoOffice = 'yo office';
@@ -29,14 +28,7 @@ describe('Install and build projects', () => {
             projectFolder = path.join(__dirname, '/', projectName);
             js = false;
           });
-        it(stringBuildSucceeds,function(done){
-            fs.writeFile("output.txt", "Hello World!", function(err) {
-                if(err) {
-                    return console.log(err);
-                }
-                console.log("File saved successfully!");
-            });
-            
+        it(stringBuildSucceeds,function(done){         
             _generateProject(projectType, projectName, host, projectFolder, js);
             _buildProject(projectFolder);
             done();
@@ -84,8 +76,7 @@ function _generateProject(projectType, projectName, host, projectFolder, js)
     else{
         installOutput = shell.exec(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder, {silent: true}).stdout;
     }
-    console.log(installOutput);
-    console.log(yoOffice + space + projectType + space + projectName + space + host + space + output + space + projectFolder);
+    console.log('This is the install output' + installOutput);
     assert.equal(installOutput.indexOf(failure), -1, "Install output contained errors");    
 }
 
@@ -95,7 +86,7 @@ function _buildProject(projectFolder)
     {
         shell.cd(projectFolder);
         buildOutput = shell.exec('npm run build', {silent: true}).stdout;
-        assert.equal(buildOutput.indexOf(failure), -1, "Build output contained errors");
+        assert.equal(buildOutput.toLowerCase().indexOf(failure), -1, "Build output contained errors");
         shell.cd(__dirname);
         _deleteFolderRecursively(projectFolder);
     }
