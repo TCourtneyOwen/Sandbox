@@ -14,6 +14,10 @@ const space = ' ';
 
 console.log ("Install Yeoman Generator");
 shell.exec('npm install -g yo');
+console.log("Install local install of Yo Office and link")
+shell.exec('npm install');
+shell.exec('npm link');
+
 describe('Install and build projects', () => {
     let projectType = '';
     let projectName = '';
