@@ -1,6 +1,6 @@
->>> @office-iss/excel-functions
+>>> excel-functions
 Found mismatch: "packages/excel-functions/package.json": "9f35e2f381275b6e9b13a955ab85462e5faa5850" !== "0e78bb8073e40093f592c49ae37fb1546add8afe"
 node ../../scripts/build.js --min-build
 
-============[ @office-iss/excel-functions ]=[ Pass ]=[ 0ms ]============
+============[ excel-functions ]=[ Pass ]=[ 0ms ]============
   

@@ -1,27 +1,28 @@
 {
-  "name": "@office-iss/excel-functions",
+  "name": "excel-functions",
   "version": "0.0.2",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "start": "npm run enable-debugging && start npm run dev-server && start npm run packager && npm run sideload",
     "start-web": "start npm run dev-server && start npm run packager",
-    "build": "node ../../scripts/build.js",
-    "buildfast": "node ../../scripts/buildfast.js",
-    "buildfull": "node ../../scripts/buildfull.js",
-    "buildmin": "node ../../scripts/buildmin.js",
-    "clean": "node ../../scripts/clean.js",
+    "build": "node ./scripts/build.js",
+    "buildfast": "node ./scripts/buildfast.js",
+    "buildfull": "node ./scripts/buildfull.js",
+    "buildmin": "node ./scripts/buildmin.js",
+    "bundle-win32": "node ./scripts/build.js native-bundle win32 dev",
+    "clean": "node ./scripts/clean.js",
     "dev-server": "http-server --cors --ssl --cert ./certs/server.crt --key ./certs/server.key",
-    "packager": "node ../../scripts/start-native.js",
+    "packager": "node ./scripts/start-native.js",
     "sideload": "office-toolbox sideload -m manifest.xml -a excel",
-    "watch": "node ../../scripts/watch.js",
+    "watch": "node ./scripts/watch.js",
     "enable-debugging": "reg import UDFDebuggingOn.reg && reg import UDFDebuggingBundlePath.reg",
     "disable-debugging": "reg import UDFDebuggingOff.reg"
   },
   "dependencies": {
-    "@office-iss/platform-api": "0.1.0",
-    "@office-iss/react-native": "0.3002.0",
-    "@office-iss/react-native-win32": "0.6.6"
+    "chalk": "2.4.1",
+    "tslint": "^5.7.0",
+    "tslint-microsoft-contrib": "^5.0.1"
   },
   "devDependencies": {
     "@types/es6-collections": "^0.5.29",
@@ -30,11 +31,13 @@
     "@types/react": "15.0.38",
     "@types/react-dom": "^15.5.0",
     "@types/react-native": "~0.55.1",
-    "@office-iss/tsnm-compiler": "0.29.1",
-    "@office-iss/react-native": "0.3002.0",
-    "@office-iss/sdx-platform-tslint": "1.0.3",
     "http-server": "^0.11.1",
-    "office-toolbox": "^0.1.0"
+    "office-toolbox": "^0.1.0",
+    "tslint": "^5.9.1",
+    "ts-loader": "^3.5.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^2.7.2",
+    "haul": "^1.0.0-rc.5"
   },
   "disabledTasks": [
     "copy",
@@ -42,7 +45,8 @@
     "sass",
     "jest",
     "ts",
-    "webpack"
+    "webpack",
+    "tslint"
   ],
   "nativeBundles": [
     {
