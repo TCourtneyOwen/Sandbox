@@ -4,6 +4,7 @@
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
+    "rootDir": "src",
     "outDir": "lib",
     "declaration": true,
     "sourceMap": true,

@@ -17,7 +17,8 @@
     "sideload": "office-toolbox sideload -m manifest.xml -a excel",
     "watch": "node ./scripts/watch.js",
     "enable-debugging": "reg import UDFDebuggingOn.reg && reg import UDFDebuggingBundlePath.reg",
-    "disable-debugging": "reg import UDFDebuggingOff.reg"
+    "disable-debugging": "reg import UDFDebuggingOff.reg",
+    "tsc": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "chalk": "2.4.1",
