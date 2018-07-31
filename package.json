@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "chalk": "2.4.1",
-    "tslint": "^5.7.0",
     "tslint-microsoft-contrib": "^5.0.1"
   },
   "devDependencies": {
