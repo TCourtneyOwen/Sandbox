@@ -92,7 +92,7 @@ function createHaulConfig(haulConfigOptions) {
         if (platform !== 'web')
           extensions.push('native');
 
-        let providesModuleNodeModules = ['@office-iss/react-native'];
+        let providesModuleNodeModules = [options.root + '/node_modules/react-native'];
         // Plugin additional win32 react native platform modules
         if (platform === 'win32') {
           providesModuleNodeModules.push('@office-iss/react-native-win32');
@@ -119,7 +119,7 @@ function createHaulConfig(haulConfigOptions) {
         let factory = createWebpackConfig({ ...options, entry: entryFile });
         let config = factory({
           ...options,
-          initializeCoreLocation: 'node_modules/@office-iss/react-native/Libraries/Core/InitializeCore.js',
+          initializeCoreLocation: './utils/InitializeCore.js',
           providesModuleNodeModules: providesModuleNodeModules,
           hasteOptions: { platforms: extensions }
         });
@@ -132,7 +132,7 @@ function createHaulConfig(haulConfigOptions) {
           }
 
           // Add bootstrapper into entry
-          const pbBootstrapperPath = path.join(options.root, 'node_modules/@office-iss/platform-api/lib/platform-bundle-bootstrapper.js');
+          const pbBootstrapperPath = path.join(options.root, './utils/platform-bundle-bootstrapper.js');
           if (fs.existsSync(pbBootstrapperPath)) {
             config.entry.unshift(pbBootstrapperPath);
           }
