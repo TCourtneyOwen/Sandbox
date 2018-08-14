@@ -1,4 +1,4 @@
-const resources = require('../../scripts/haul-resources');
+const resources = require('./scripts/haul-resources');
 const haulConfigOptions = {
     "entryFile": "./functions.ts"
 }

@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const packageRoot = process.cwd();
 
-if (fs.existsSync(path.resolve(packageRoot, '../haul.config.js'))) {
+if (fs.existsSync(path.resolve(packageRoot, './haul.config.js'))) {
   let haulCmd = `node ${path.resolve(__dirname, '../node_modules/haul/bin/cli.js')} start`;
   console.log('Haul command is ' + haulCmd);
   execSync(haulCmd);

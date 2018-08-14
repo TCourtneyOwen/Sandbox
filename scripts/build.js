@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { getTimePrefix } = require('./utils/logging');
 const package = getPackage();
-const userBuildConfigPath = path.resolve(__dirname, '../min-build-config.json');
+const userBuildConfigPath = path.resolve(__dirname, './min-build-config.json');
 const userBuildConfig = fs.existsSync(userBuildConfigPath)
   ? JSON.parse(fs.readFileSync(userBuildConfigPath))
   : undefined;
@@ -14,6 +14,8 @@ if (!package) {
   return;
 }
 
+const packageName = package.name;
+const isProduction = process.argv.indexOf('--production') > -1;
 const minBuild = process.argv.indexOf('--min-build') > -1;
 const doClean = process.argv.indexOf('--clean') > -1;
 const doPrettier = process.argv.indexOf('--prettier') > -1;

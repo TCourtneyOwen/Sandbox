@@ -73,42 +73,6 @@
         "cancelable": true,
         "stream": true
       }
-    },
-    {
-      "name": "CLOCK",
-      "description": "Show the current time.",
-      "helpUrl": "http://dev.office.com",
-      "result": {
-        "type": "string",
-        "dimensionality": "scalar"
-      },
-      "parameters": [
-      ],
-      "options": {
-        "sync": false,
-        "cancelable": true,
-        "stream": true
-      }
-    },
-    {
-      "name": "LOG",
-      "description": "Write a message to the log.",
-      "helpUrl": "http://dev.office.com",
-      "result": {
-        "type": "string",
-        "dimensionality": "scalar"
-      },
-      "parameters": [
-        {
-          "name": "message",
-          "description": "The message.",
-          "type": "string",
-          "dimensionality": "scalar"
-        }
-      ],
-      "options": {
-        "sync": false
-      }
     }
   ]
 }
