@@ -92,10 +92,10 @@ function createHaulConfig(haulConfigOptions) {
         if (platform !== 'web')
           extensions.push('native');
 
-        let providesModuleNodeModules = [options.root + '/node_modules/react-native'];
+        let providesModuleNodeModules = ['node_modules/react-native'];
         // Plugin additional win32 react native platform modules
         if (platform === 'win32') {
-          providesModuleNodeModules.push('@office-iss/react-native-win32');
+          providesModuleNodeModules.push('node_modules/react-native-windows');
         }
 
         let entryFile = options.entryFile || `./src/index.${platform}.tsx`;
