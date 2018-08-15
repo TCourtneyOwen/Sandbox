@@ -9,6 +9,14 @@
             "request": "attach",
             "name": "Attach",
             "port": 9229
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch SDX debugger",
+            "program": "${workspaceFolder}/debugger.js",
+            "autoAttachChildProcesses": true,
+            "sourceMaps": true
         }
     ]
 }

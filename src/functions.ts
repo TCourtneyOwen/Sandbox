@@ -1,7 +1,7 @@
 declare var CustomFunctionMappings;
 
 function add(first: number, second: number): number {
-  return first + second + 10;
+  return first + second;
 }
 
 function addAsync(first: number, second: number): Promise<number> {

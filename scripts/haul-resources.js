@@ -92,10 +92,10 @@ function createHaulConfig(haulConfigOptions) {
         if (platform !== 'web')
           extensions.push('native');
 
-        let providesModuleNodeModules = ['node_modules/react-native'];
+        let providesModuleNodeModules = ['react-native'];
         // Plugin additional win32 react native platform modules
         if (platform === 'win32') {
-          providesModuleNodeModules.push('node_modules/react-native-windows');
+          providesModuleNodeModules.push('react-native-windows');
         }
 
         let entryFile = options.entryFile || `./src/index.${platform}.tsx`;
@@ -119,7 +119,7 @@ function createHaulConfig(haulConfigOptions) {
         let factory = createWebpackConfig({ ...options, entry: entryFile });
         let config = factory({
           ...options,
-          initializeCoreLocation: './utils/InitializeCore.js',
+          initializeCoreLocation: 'scripts/utils/InitializeCore.js',
           providesModuleNodeModules: providesModuleNodeModules,
           hasteOptions: { platforms: extensions }
         });
@@ -147,20 +147,20 @@ function createHaulConfig(haulConfigOptions) {
         }
 
         // redirect react-native includes to our fork of react-native
-        config.resolve.alias['react-native'] = '@office-iss/react-native';
+        config.resolve.alias['react-native'];
 
         let babelLoaderRule = config.module.rules[1];
 
         // override babel rule from haul, to allow custom babel per platform
         babelLoaderRule.use[0].options.babelrc = false;
-        babelLoaderRule.use[0].options.presets = [
-          [
-            require.resolve("@office-iss/babel-preset-haul-sdx"),
-            {
-              "platform": platform,
-            },
-          ]
-        ];
+        // babelLoaderRule.use[0].options.presets = [
+        //   [
+        //     require.resolve("@office-iss/babel-preset-haul-sdx"),
+        //     {
+        //       "platform": platform,
+        //     },
+        //   ]
+        // ];
 
         // Haul excludes most of node_modules, but includes react-native from babel, we need to replace the to also include @office-iss/react
         babelLoaderRule.exclude = /node_modules\/(?!react|@expo|pretty-format|haul|metro|@office-iss[\\/]react)/
