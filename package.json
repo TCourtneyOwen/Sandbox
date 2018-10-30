@@ -1,61 +1,28 @@
 {
-  "name": "excel-functions",
-  "version": "0.0.2",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "name": "excel-custom-functions",
+  "version": "2.0.0",
+  "main": "./src/customfunctions.js",
   "scripts": {
-    "start": "npm run enable-debugging && start npm run dev-server && start npm run packager && npm run sideload",
-    "start-web": "start npm run dev-server && start npm run packager",
-    "build": "node ./scripts/build.js",
-    "buildfast": "node ./scripts/buildfast.js",
-    "buildfull": "node ./scripts/buildfull.js",
-    "buildmin": "node ./scripts/buildmin.js",
-    "bundle-win32": "node ./scripts/build.js native-bundle win32 dev",
-    "clean": "node ./scripts/clean.js",
-    "dev-server": "http-server --cors --ssl --cert ./certs/server.crt --key ./certs/server.key",
-    "packager": "node ./scripts/start-native.js",
+    "start": "concurrently \"npm run dev-server\" \"npm run watch\" \"npm run sideload\"",
+    "start-web": "concurrently \"npm run dev-server\" \"npm run watch\"",
+    "build": "webpack -p --mode production",
+    "dev-server": "webpack-dev-server --mode development --https --key ./certs/server.key --cert ./certs/server.crt --cacert ./certs/ca.crt --port 8081 --hotOnly",
     "sideload": "office-toolbox sideload -m manifest.xml -a excel",
-    "watch": "node ./scripts/watch.js",
-    "enable-debugging": "reg import UDFDebuggingOn.reg && reg import UDFDebuggingBundlePath.reg",
-    "disable-debugging": "reg import UDFDebuggingOff.reg",
-    "tsc": "tsc -p tsconfig.json"
-  },
-  "dependencies": {
-    "chalk": "2.4.1",
-    "tslint-microsoft-contrib": "^5.0.1"
+    "test": "mocha -r esm test/**/*.js",
+    "watch": "webpack -p --mode development --watch"
   },
   "devDependencies": {
-    "@types/es6-collections": "^0.5.29",
-    "@types/es6-promise": "0.0.32",
-    "@types/flux": "^3.1.0",
-    "@types/react": "15.0.38",
-    "@types/react-dom": "^15.5.0",
-    "@types/react-native": "~0.55.1",
-    "haul": "^1.0.0-rc.5",
-    "http-server": "^0.11.1",
+    "concurrently": "^4.0.1",
+    "esm": "^3.0.84",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "mocha": "^5.2.0",
+    "office-addin-node-debugger": "^0.1.0",
     "office-toolbox": "^0.1.0",
-    "react-native": "^0.56.0",
-    "react-native-windows": "^0.55.0-rc.0",
-    "ts-loader": "^4.4.2",
-    "tslint": "^5.9.1",
-    "tslint-react": "^3.6.0",
-    "typescript": "^2.7.2",
-    "ws": "^6.0.0"
-  },
-  "disabledTasks": [
-    "copy",
-    "dsgen",
-    "sass",
-    "jest",
-    "ts",
-    "webpack",
-    "tslint"
-  ],
-  "nativeBundles": [
-    {
-      "entryFile": "./src/functions.ts",
-      "platform": "win32",
-      "platformBundleEnabled": true
-    }
-  ]
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-command": "^0.4.1",
+    "webpack-dev-server": "^3.1.1",
+    "babel-preset-es2015": "^6.24.1"
+  }
 }
