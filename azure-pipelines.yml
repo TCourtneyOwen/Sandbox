@@ -41,9 +41,9 @@ jobs:
       versionSpec: '8.x'
     displayName: 'Install Node.js'
   - task: Npm@1
-  inputs:
-    command: publish
-    publishEndpoint: 'cowen-sandbox'
+    inputs:
+     command: publish
+     publishEndpoint: 'cowen-sandbox'
   - script: |
       npm install
       npm run build
