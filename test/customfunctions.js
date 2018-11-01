@@ -1,5 +1,5 @@
 export function add(first, second){
-    return first + second + 1000;
+    return first + second;
   }
   
 export function increment(incrementBy, callback) {
