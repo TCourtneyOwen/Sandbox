@@ -4,12 +4,8 @@ const assert = require('assert');
 describe('Custom Functions', function() {
     describe('Custom Functions Samples', function() {
       it('should verify sample custom functions work as expected', function() {
-        const addResult = customFunctions.add(5,8);  
-        assert.strictEqual(addResult, 13);
-      });
-      it('should verify sample custom functions work as expected', function() {
-        const addResult = customFunctions.add(5,5);  
-        assert.strictEqual(addResult, 1010);
+        const addResult = customFunctions.add(2,2);  
+        assert.strictEqual(addResult, 4);
       });
     });
   });
