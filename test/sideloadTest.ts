@@ -51,11 +51,11 @@ describe("Test Excel Custom Functions", function() {
   });
 });
 
-describe("Teardown test environment", function() {
-    describe("Kill Excel and the test server", function() {
-      it("should close Excel and stop the test server", async function() {
-        await helperMethods.teardownTestEnvironment(process.platform == 'win32' ? "EXCEL" : "Excel");
-      });
-    });
-  });
+// describe("Teardown test environment", function() {
+//     describe("Kill Excel and the test server", function() {
+//       it("should close Excel and stop the test server", async function() {
+//         await helperMethods.teardownTestEnvironment(process.platform == 'win32' ? "EXCEL" : "Excel");
+//       });
+//     });
+//   });
 
