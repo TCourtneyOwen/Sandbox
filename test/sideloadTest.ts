@@ -8,18 +8,18 @@ const promiseGetTestResults = helperMethods.getTestResults();
 const functionsJsonFile: string = `${__dirname}/functionsTestData.json`;
 const functionsJsonData = JSON.parse(fs.readFileSync(functionsJsonFile).toString());
 
-describe("Setup test environment", function() {
-  describe("Start sideload, start dev-server, and start test-server", function() {
-    it("Sideload should have completed and dev-server should have started", async function() {
-      const setupTestEnvironmentSucceeded = await promiseSetupTestEnvironment;
-      assert.equal(setupTestEnvironmentSucceeded, true);
-    });
-    it("Test server should have started and Excel should have pinged the server", async function() {
-      const testServerStarted = await promiseStartTestServer;
-      assert.equal(testServerStarted, true);
-    });
-  });
-});
+// describe("Setup test environment", function() {
+//   describe("Start sideload, start dev-server, and start test-server", function() {
+//     it("Sideload should have completed and dev-server should have started", async function() {
+//       const setupTestEnvironmentSucceeded = await promiseSetupTestEnvironment;
+//       assert.equal(setupTestEnvironmentSucceeded, true);
+//     });
+//     it("Test server should have started and Excel should have pinged the server", async function() {
+//       const testServerStarted = await promiseStartTestServer;
+//       assert.equal(testServerStarted, true);
+//     });
+//   });
+// });
 
 describe("Test Excel Custom Functions", function() {
   describe("Get test results for custom functions and validate results", function() {    
