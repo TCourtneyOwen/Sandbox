@@ -25,8 +25,8 @@ describe("Test Excel Custom Functions", function() {
   describe("Get test results for custom functions and validate results", function() {    
     it("should get results from the taskpane application", async function() {
       cfValues = await promiseGetTestResults;
-      // Expecting five result values
-      assert.equal(cfValues.length, 25);
+      // Expecting six result values
+      assert.equal(cfValues.length, 6);
     });
     it("ADD function should return expected value", async function() {
       assert.equal(functionsJsonData.functions.ADD.result, cfValues[0].Value);
