@@ -1,0 +1,116 @@
+resources:
+- repo: self
+
+
+
+jobs:
+
+
+
+- job: Job_1
+
+  displayName: Windows
+
+  condition: succeeded()
+
+  pool:
+
+    name: OPX Windows Dogfood Pool
+
+    demands: npm
+
+
+
+  steps:
+
+  - task: Npm@1
+
+    displayName: 'npm install'
+
+    inputs:
+
+      verbose: false
+
+
+
+  - task: Npm@1
+
+    displayName: 'npm build'
+
+    inputs:
+
+      command: custom
+
+      verbose: false
+
+      customCommand: 'run build'
+
+
+
+  - task: Npm@1
+
+    displayName: 'npm test'
+
+    inputs:
+
+      command: custom
+
+      verbose: false
+
+      customCommand: 'run test'
+
+    continueOnError: true
+
+
+
+
+
+- job: Job_2
+
+  displayName: Mac
+
+  condition: succeeded()
+
+  pool:
+
+    name: OPX Mac Dogfood Pool
+
+    demands: npm
+
+
+
+  steps:
+
+  - task: Npm@1
+
+    displayName: 'npm install'
+
+    inputs:
+
+      verbose: false
+
+
+
+  - task: Npm@1
+
+    displayName: 'npm build'
+
+    inputs:
+
+      command: custom
+
+      verbose: false
+
+      customCommand: 'run build'
+
+
+
+  - task: Npm@1
+
+    displayName: 'npm test'
+
+    inputs:
+
+      command: custom
+
+      verbose: false
