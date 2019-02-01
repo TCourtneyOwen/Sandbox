@@ -28,6 +28,7 @@ describe("Test Excel Custom Functions", function() {
       // Expecting six result values
       assert.equal(cfValues.length, 6);
     });
+    // Check that the ADD function returns '7'
     it("ADD function should return expected value", async function() {
       assert.equal(functionsJsonData.functions.ADD.result, cfValues[0].Value);
     });
