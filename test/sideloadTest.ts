@@ -30,7 +30,7 @@ describe("Test Excel Custom Functions", function() {
     });
     // Check that the ADD function returns '7'
     it("ADD function should return expected value", async function() {
-      assert.equal(functionsJsonData.functions.ADD.result, 0);
+      assert.equal(functionsJsonData.functions.ADD.result, cfValues[0].Value);
     });
     it("CLOCK function should return expected value", async function() {
       // Check that captured values are different to ensure the function is streaming
