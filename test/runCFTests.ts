@@ -12,7 +12,7 @@ export async function runCfTests(operatingSystem: string): Promise<void> {
             await context.sync();
 
             // Mac is much slower so we need to wait longer for the function to return a value
-            await sleep(operatingSystem === "Win32" ? 2000 : 8000);
+            await sleep(operatingSystem === "Win32" ? 2000 : 5000);
 
             // Check to if this is a streaming function
             await readData(key, customFunctions[key].streaming != undefined ? 2 : 1, operatingSystem)            
@@ -33,7 +33,7 @@ async function readData(cfName: string, readCount: number, operatingSystem: stri
             await context.sync();
 
             // Mac is much slower so we need to wait longer for the function to return a value
-            await sleep(operatingSystem === "Win32" ? 2000 : 8000);
+            await sleep(operatingSystem === "Win32" ? 2000 : 5000);
 
             var data  = {};
             var nameKey = "Name";
