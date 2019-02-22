@@ -1,18 +1,25 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "baseUrl": ".",
-    "experimentalDecorators": true,
-    "jsx": "react",
-    "noEmitOnError": true,
-    "outDir": "lib",
-    "sourceMap": true,
-    "target": "es5"
-  },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
-  ]
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "declaration": true,
+        "outDir": "lib",
+        "strict": true,
+        "alwaysStrict": false,
+        "noImplicitUseStrict": true,
+        "types": [
+            "node",
+            "es6-promise"
+        ]
+    },
+    "include": [
+        "src/**/*",
+    ],
+    "exclude": [
+        "node_modules",
+        "lib"
+    ]
 }
