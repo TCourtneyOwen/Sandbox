@@ -1,0 +1,19 @@
+[
+    {
+        "artifactId": "/artifactSources/privaterepo811/artifacts/windows-azuredevops-remove-agent",
+        "parameters": [
+            {
+                "name": "PersonalAccessToken",
+                "value": "[[PersonalAccessToken]]"
+            },
+            {
+                "name": "AgentName",
+                "value": ""
+            },
+            {
+                "name": "AgentLocation",
+                "value": "c:\\agents"
+            }
+        ]
+    }
+]

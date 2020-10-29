@@ -1,0 +1,164 @@
+[
+  {
+    "artifactId": "/artifactSources/privaterepo811/artifacts/node-lts-installer",
+    "parameters": []
+  },
+  {
+    "artifactId": "/artifactSources/public repo/artifacts/windows-vscode",
+    "parameters": []
+  },
+  {
+    "artifactId": "/artifactSources/public repo/artifacts/windows-git",
+    "parameters": []
+  },
+  {
+    "artifactId": "/artifactSources/public repo/artifacts/windows-chocolatey",
+    "parameters": [
+      {
+        "name": "packages",
+        "value": "googlechrome"
+      },
+      {
+        "name": "allowEmptyChecksums",
+        "value": "true"
+      },
+      {
+        "name": "ignoreChecksums",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "artifactId": "/artifactSources/public repo/artifacts/windows-firewall",
+    "parameters": [
+      {
+        "name": "firewallOperation",
+        "value": "Disable Firewall"
+      }
+    ]
+  },
+  {
+    "artifactId": "/artifactSources/public repo/artifacts/windows-clone-git-repo",
+    "parameters": [
+      {
+        "name": "GitRepoURI",
+        "value": "https://office.visualstudio.com/OC/_git/office-js-api"
+      },
+      {
+        "name": "Destination",
+        "value": "C:\\Repos"
+      },
+      {
+        "name": "Branch",
+        "value": "master"
+      },
+      {
+        "name": "PersonalAccessToken",
+        "value": "wpqfkbl3iminkzvbmyv6i24qy6zhkw4mp4q3bfh5dp52nyor2bla"
+      }
+    ]
+  },
+  {
+    "artifactId": "/artifactSources/public repo/artifacts/windows-clone-git-repo",
+    "parameters": [
+      {
+        "name": "GitRepoURI",
+        "value": "https://office.visualstudio.com/DefaultCollection/OC/_git/Office-Addin-Artifacts"
+      },
+      {
+        "name": "Destination",
+        "value": "C:\\Repos"
+      },
+      {
+        "name": "Branch",
+        "value": "master"
+      },
+      {
+        "name": "PersonalAccessToken",
+        "value": "ouskr7f2dazsvze5a6trgprg67h72q6k3zfdhtrnhrkepikkvvpa"
+      }
+    ]
+  },
+  {
+    "artifactId": "/artifactSources/privaterepo811/artifacts/windows-office-installer",
+    "parameters": [
+      {
+        "name": "InstallRing",
+        "value": "Insiders-Fast"
+      }
+    ]
+  },
+  {
+    "artifactId": "/artifactSources/privaterepo811/artifacts/windows-azuredevops-agent-autologon",
+    "parameters": [
+      {
+        "name": "Account",
+        "value": "office"
+      },
+      {
+        "name": "PersonalAccessToken",
+        "value": "[[PersonalAccessToken]]"
+      },
+      {
+        "name": "PoolName",
+        "value": "OPX Windows 1903 Dogfood Pool"
+      },
+      {
+        "name": "AgentName",
+        "value": ""
+      },
+      {
+        "name": "AutoLogonAccount",
+        "value": "opxadmin"
+      },
+      {
+        "name": "AutoLogonPassword",
+        "value": "[[opxadmin]]"
+      },
+      {
+        "name": "Overwrite",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "artifactId": "/artifactSources/privaterepo811/artifacts/windows-office-signin-suppression",
+    "parameters": [
+      {
+        "name": "UserAccountName",
+        "value": "opxadmin"
+      }
+    ]
+  },
+  {
+    "artifactId": "/artifactSources/privaterepo811/artifacts/enable-edge-webview",
+    "parameters": [
+      {
+        "name": "UserAccountName",
+        "value": "opxadmin"
+      }
+    ]
+  },
+  {
+    "artifactId": "/artifactSources/privaterepo811/artifacts/install-office-addin-dev-certs",
+    "parameters": [
+      {
+        "name": "UserAccountName",
+        "value": "opxadmin"
+      }
+    ]
+  },
+  {
+    "artifactId": "/artifactSources/privaterepo811/artifacts/windows-office-privacy-dialog-suppression",
+    "parameters": [
+      {
+        "name": "UserAccountName",
+        "value": "opxadmin"
+      }
+    ]
+  },
+  {
+    "artifactId": "/artifactSources/public repo/artifacts/windows-restart",
+    "parameters": []
+  }
+]

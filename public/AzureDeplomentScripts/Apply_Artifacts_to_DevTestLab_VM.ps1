@@ -1,0 +1,2 @@
+﻿#Apply artifacts to VM
+az lab vm apply-artifacts --lab-name  OPX-Dev-Test-Lab --name opx-azure-02 --resource-group opx-vhds  --artifacts '@\\officefile\public\cowen\AzureDeplomentScripts\artifacts.json'
